@@ -236,7 +236,7 @@ class LoginScreen extends StatelessWidget {
           // Chuyển sang màn hình Đăng ký
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const Signupscreen()),
+            MaterialPageRoute(builder: (context) => Signupscreen()),
           );
         },
         child: Container(

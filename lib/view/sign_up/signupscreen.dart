@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'sign_upwidgest.dart';
 import '../login/login_screen.dart';
-
+import 'package:ai_gymhealthy_app/services/auth_service.dart';
 class Signupscreen extends StatelessWidget {
-  const Signupscreen({super.key});
+   Signupscreen({super.key});
+   final AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +13,7 @@ class Signupscreen extends StatelessWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final bool isKeyboardVisible = MediaQuery.of(context).viewInsets.bottom > 0;
+    final VoidCallback? onTap;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Stack(
@@ -88,7 +90,18 @@ class Signupscreen extends StatelessWidget {
   Widget _buildSocialRow(BuildContext context, double width, bool isDark) => Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      LoginWidgets.socialButton(context, imagePath: 'assets/img2/google.png', screenWidth: width),
+      LoginWidgets.socialButton(
+        context, 
+        imagePath: 'assets/img2/google.png', 
+        screenWidth: width,
+        onTap: () async {
+        final user = await _authService.signInWithGoogle();
+        if (user != null) {
+          // Đăng ký thành công -> Chuyển vào trang chủ hoặc trang thông tin cá nhân
+          Navigator.pushReplacementNamed(context, '/home'); 
+        }
+        },
+        ),
       LoginWidgets.socialButton(context, icon: Icons.facebook, iconColor: Colors.blue, screenWidth: width),
       LoginWidgets.socialButton(context, icon: Icons.apple, iconColor: isDark ? Colors.white : Colors.black, screenWidth: width),
     ],
