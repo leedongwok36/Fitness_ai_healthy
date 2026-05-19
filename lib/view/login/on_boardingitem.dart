@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'on_boardingmode.dart';
 import 'on_boardingsreen.dart';
-import 'login_sreen.dart';
+import 'login_screen.dart';
 class OnBoardingItem extends StatelessWidget {
   const OnBoardingItem({super.key});
 
@@ -48,7 +48,7 @@ class OnBoardingItem extends StatelessWidget {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const LoginScreen(),
+              builder: (context) =>  LoginScreen(),
             ),
           );
         },
@@ -61,7 +61,7 @@ class OnBoardingItem extends StatelessWidget {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const LoginScreen(),
+              builder: (context) => LoginScreen(),
             ),
           );
         },

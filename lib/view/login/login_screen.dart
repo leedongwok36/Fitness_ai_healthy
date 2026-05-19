@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'login_widgets.dart';
 import '../../view/sign_up/signupscreen.dart';
+import 'package:ai_gymhealthy_app/services/auth_service.dart';
+import '../../view/home/home_view.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
 
+  final AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -13,7 +16,7 @@ class LoginScreen extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
     final bool isKeyboardVisible = MediaQuery.of(context).viewInsets.bottom > 0;
     final VoidCallback? onTap;
-
+   
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Stack(
@@ -55,21 +58,23 @@ class LoginScreen extends StatelessWidget {
                       _buildLoginButton(),
                       const SizedBox(height: 10),
                       Builder(
-    builder: (context) {
-      // Lấy chiều cao của bàn phím
-      double keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
-      
-      if (keyboardHeight > 0) {
-        // Nếu có bàn phím: Thêm một khoảng đệm nhỏ (ví dụ 20px) 
-        // để nút Login không bị chạm sát bàn phím.
-        return const SizedBox(height: 20);
-      } else {
-        // Nếu không có bàn phím: Không thêm khoảng trống nào cả (0px)
-        // Vì lúc này Footer đã hiện ra và nó không đè lên nút Login.
-        return const SizedBox(height: 0);
-      }
-    },
-  ),
+                        builder: (context) {
+                          // Lấy chiều cao của bàn phím
+                          double keyboardHeight = MediaQuery.of(
+                            context,
+                          ).viewInsets.bottom;
+
+                          if (keyboardHeight > 0) {
+                            // Nếu có bàn phím: Thêm một khoảng đệm nhỏ (ví dụ 20px)
+                            // để nút Login không bị chạm sát bàn phím.
+                            return const SizedBox(height: 20);
+                          } else {
+                            // Nếu không có bàn phím: Không thêm khoảng trống nào cả (0px)
+                            // Vì lúc này Footer đã hiện ra và nó không đè lên nút Login.
+                            return const SizedBox(height: 0);
+                          }
+                        },
+                      ),
                       SizedBox(height: isKeyboardVisible ? 50 : 100),
                       //_buildFooter(isTablet),
                     ],
@@ -138,6 +143,25 @@ class LoginScreen extends StatelessWidget {
             context,
             imagePath: 'assets/img2/google.png',
             screenWidth: width,
+            onTap: () async {
+              // Gọi hàm đăng nhập
+              final user = await _authService.signInWithGoogle();
+
+              if (user != null) {
+                // Đăng nhập thành công -> Chuyển sang trang chủ
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
+              } else {
+                // Thông báo lỗi nếu cần
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Đăng nhập thất bại. Vui lòng thử lại!"),
+                  ),
+                );
+              }
+            },
           ),
           LoginWidgets.socialButton(
             context,

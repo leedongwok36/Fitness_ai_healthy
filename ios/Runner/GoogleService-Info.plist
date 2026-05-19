@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>583267136931-kab8ql9i0hmjvlrj4imkhd8q83nha6n4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.583267136931-kab8ql9i0hmjvlrj4imkhd8q83nha6n4</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>583267136931-t3m4nt9enc1u7g82m088r5lsl5aqgc9i.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDvpoc8eoUrwjRA-pgpELLzoNuY5NVpeTw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>583267136931</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.aiGymhealthyApp</string>
+	<key>PROJECT_ID</key>
+	<string>gymhealthy-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>gymhealthy-app.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:583267136931:ios:0cee2960547eb42ad45616</string>
+</dict>
+</plist>

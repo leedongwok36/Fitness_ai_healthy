@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'sign_upwidgest.dart';
-import '../../view/login/login_sreen.dart';
+import '../login/login_screen.dart';
 
 class Signupscreen extends StatelessWidget {
   const Signupscreen({super.key});
@@ -130,7 +130,7 @@ class Signupscreen extends StatelessWidget {
           // Chuyển sang màn hình Đăng ký
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const LoginScreen()),
+            MaterialPageRoute(builder: (context) =>  LoginScreen()),
           );
         },
       child: Container(

@@ -7,12 +7,16 @@ class LoginWidgets {
     IconData? icon,
     Color? iconColor,
     required double screenWidth,
+    VoidCallback? onTap,
   }) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     double btnWidth = (screenWidth > 600) ? 120 : (screenWidth - 90) / 3;
-
-    return Container(
+    
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(18),
+      child: Container(
       width: btnWidth,
       height: 55,
       decoration: BoxDecoration(
@@ -22,6 +26,7 @@ class LoginWidgets {
           BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10, offset: const Offset(0, 4))
         ],
       ),
+      
       child: Center(
         child: imagePath != null 
           ? Image.asset(
@@ -31,6 +36,7 @@ class LoginWidgets {
               errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image),
             )
           : Icon(icon, color: iconColor, size: 28),
+        ),
       ),
     );
   }
